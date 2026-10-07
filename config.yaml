@@ -1,0 +1,56 @@
+﻿# =============================================================
+# Spam-Ham Email Detector — Central Configuration
+# =============================================================
+
+project:
+  name: "Spam-Ham Email Detector"
+  version: "1.0.0"
+  seed: 42
+
+paths:
+  raw_data: "data/raw"
+  processed_data: "data/processed"
+  model_dir: "models/distilbert_spam"
+  db_path: "data/predictions.db"
+  logs_dir: "logs"
+
+model:
+  base_model: "distilbert-base-uncased"
+  num_labels: 2
+  max_length: 256
+  id2label:
+    0: "HAM"
+    1: "SPAM"
+  label2id:
+    HAM: 0
+    SPAM: 1
+
+training:
+  epochs: 3
+  batch_size: 16
+  learning_rate: 2.0e-5
+  weight_decay: 0.01
+  warmup_steps: 100
+  eval_strategy: "epoch"
+  save_strategy: "epoch"
+  load_best_model_at_end: true
+  metric_for_best_model: "f1"
+  test_size: 0.15
+  val_size: 0.10
+
+preprocessing:
+  strip_html: true
+  remove_urls: true
+  remove_email_headers: true
+  lowercase: true
+  remove_extra_whitespace: true
+
+shap:
+  max_evals: 500
+  num_top_tokens: 15
+
+streamlit:
+  page_title: "Spam-Ham Detector"
+  page_icon: "🛡️"
+  layout: "wide"
+  confidence_threshold: 0.85

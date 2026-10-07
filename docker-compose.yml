@@ -1,0 +1,30 @@
+﻿# ============================================================
+# docker-compose.yml — Spam-Ham Email Detector
+# ============================================================
+# Usage:
+#   docker compose up --build          # First run
+#   docker compose up                  # Subsequent runs
+#   docker compose down                # Stop and remove containers
+
+version: "3.9"
+
+services:
+  spam-detector:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: spam-ham-detector:latest
+    container_name: spam_ham_detector
+    ports:
+      - "8501:8501"
+    volumes:
+      # Persist model, data, and DB between container restarts
+      - ./models:/app/models
+      - ./data:/app/data
+      - ./logs:/app/logs
+    env_file:
+      - .env
+    environment:
+      - CONFIG_PATH=config.yaml
+      - TOKENIZERS_PARALLELISM=false
+    restart: unless-stopped

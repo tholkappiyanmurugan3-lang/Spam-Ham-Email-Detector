@@ -1,0 +1,30 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+
+# Model weights (large files)
+models/distilbert_spam/
+
+# Data
+data/processed/
+data/predictions.db
+
+# Environment
+.env
+
+# Logs
+logs/
+
+# Notebooks
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db

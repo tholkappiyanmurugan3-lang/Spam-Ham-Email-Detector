@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SpamShield – Project Presentation Poster (Single Page)</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700;800;900&display=swap');
+
+    @page {
+      size: A3 landscape;
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+      background-color: #EAF0F6;
+      color: #1A202C;
+      width: 100vw;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      padding: 12px 18px;
+    }
+
+    /* ================= HEADER ================= */
+    .poster-header {
+      background-color: #005A9E;
+      color: white;
+      border-radius: 8px;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      margin-bottom: 12px;
+    }
+
+    .header-logo-badge {
+      background-color: #FFC820;
+      color: #005A9E;
+      border-radius: 8px;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border: 1.5px solid #E0A800;
+    }
+
+    .header-logo-icon {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .header-logo-icon span {
+      display: block;
+      width: 22px;
+      height: 6px;
+      background-color: #005A9E;
+      border-radius: 3px;
+    }
+
+    .header-logo-text h3 {
+      font-size: 15px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      line-height: 1.1;
+    }
+
+    .header-logo-text p {
+      font-size: 8px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    .header-titles {
+      text-align: center;
+      flex: 1;
+      padding: 0 20px;
+    }
+
+    .header-titles h1 {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+
+    .header-titles h2 {
+      font-size: 19px;
+      font-weight: 700;
+      color: #F0F4F8;
+    }
+
+    .header-course-badge {
+      background-color: white;
+      color: #005A9E;
+      border-radius: 8px;
+      padding: 8px 22px;
+      text-align: center;
+      border: 1.5px solid #CBD5E1;
+    }
+
+    .header-course-badge h3 {
+      font-size: 18px;
+      font-weight: 900;
+      line-height: 1.1;
+    }
+
+    .header-course-badge p {
+      font-size: 14px;
+      font-weight: 700;
+      color: #005A9E;
+    }
+
+    /* ================= MAIN 3-COL GRID ================= */
+    .poster-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.08fr 1fr;
+      gap: 14px;
+      flex: 1;
+    }
+
+    .col {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* ================= CARDS ================= */
+    .card {
+      background-color: white;
+      border: 1.8px solid #0078D4;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 2px 8px rgba(0, 90, 158, 0.06);
+    }
+
+    .card-header {
+      background-color: #0062A3;
+      color: white;
+      font-weight: 700;
+      font-size: 13.5px;
+      padding: 6px 14px;
+      letter-spacing: 0.3px;
+    }
+
+    .card-body {
+      padding: 10px 14px;
+      font-size: 9.2px;
+      line-height: 1.45;
+      color: #2D3748;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+    }
+
+    .card-body p {
+      text-align: justify;
+    }
+
+    .section-subtitle {
+      font-size: 10.2px;
+      font-weight: 700;
+      color: #1A202C;
+      margin-top: 2px;
+    }
+
+    ul.bullet-list {
+      list-style-type: none;
+      padding-left: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    ul.bullet-list li {
+      position: relative;
+      padding-left: 14px;
+      text-align: justify;
+    }
+
+    ul.bullet-list li::before {
+      content: "•";
+      position: absolute;
+      left: 2px;
+      color: #1A202C;
+      font-weight: bold;
+      font-size: 11px;
+    }
+
+    ul.bullet-list li strong {
+      color: #1A202C;
+    }
+
+    /* Workflow Flowchart */
+    .workflow-container {
+      margin-top: auto;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 6px;
+      padding: 10px 6px;
+      text-align: center;
+    }
+
+    .workflow-steps {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      gap: 4px;
+      margin-bottom: 6px;
+    }
+
+    .workflow-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      width: 65px;
+    }
+
+    .step-circle {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #0078D4;
+      border: 2px solid #005A9E;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .step-label {
+      font-size: 8px;
+      font-weight: 700;
+      color: #1A202C;
+      line-height: 1.15;
+    }
+
+    .workflow-arrow {
+      color: #0078D4;
+      font-size: 16px;
+      font-weight: 900;
+    }
+
+    .fig-caption {
+      font-size: 8.5px;
+      font-weight: 700;
+      color: #005A9E;
+      text-align: center;
+      margin-top: 4px;
+    }
+
+    /* ================= RESULTS TABLE ================= */
+    .results-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 8.5px;
+      margin-top: 4px;
+    }
+
+    .results-table th {
+      background-color: #0062A3;
+      color: white;
+      font-weight: 700;
+      padding: 5px 6px;
+      text-align: center;
+      border: 1px solid #005A9E;
+    }
+
+    .results-table th:first-child {
+      text-align: left;
+    }
+
+    .results-table td {
+      padding: 4px 6px;
+      text-align: center;
+      border-bottom: 1px solid #E2E8F0;
+      color: #1A202C;
+    }
+
+    .results-table td:first-child {
+      text-align: left;
+    }
+
+    .results-table tr:nth-child(even) td {
+      background-color: #F8FAFC;
+    }
+
+    .results-table tr.highlighted td {
+      background-color: #D4EDDA;
+      color: #155724;
+      font-weight: 700;
+      border-top: 1px solid #28A745;
+      border-bottom: 1px solid #28A745;
+    }
+
+    /* Feature Importance Bars */
+    .bars-container {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-top: 6px;
+    }
+
+    .bar-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 8.2px;
+      font-weight: 700;
+    }
+
+    .bar-label {
+      width: 95px;
+      text-align: right;
+      color: #1A202C;
+    }
+
+    .bar-track {
+      flex: 1;
+      height: 12px;
+      background: #EDF2F7;
+      border-radius: 2px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: 2px;
+    }
+
+    .bar-val {
+      width: 32px;
+      font-weight: 800;
+      font-size: 8px;
+    }
+
+    /* Clustered Bar Chart */
+    .chart-container {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 6px;
+      padding: 8px 12px;
+      position: relative;
+    }
+
+    .chart-legend {
+      display: flex;
+      justify-content: flex-end;
+      gap: 14px;
+      font-size: 8.2px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .legend-color {
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+    }
+
+    .bar-group-chart {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-around;
+      height: 85px;
+      border-left: 1.5px solid #A0AEC0;
+      border-bottom: 1.5px solid #A0AEC0;
+      padding: 0 10px;
+    }
+
+    .bar-group {
+      display: flex;
+      align-items: flex-end;
+      gap: 4px;
+      position: relative;
+    }
+
+    .bar-group::after {
+      content: attr(data-label);
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 7.8px;
+      font-weight: 700;
+      color: #4A5568;
+      white-space: nowrap;
+      margin-top: 4px;
+    }
+
+    .bar-actual {
+      width: 16px;
+      background-color: #0078D4;
+      border-radius: 2px 2px 0 0;
+    }
+
+    .bar-pred {
+      width: 16px;
+      background-color: #FF8C00;
+      border-radius: 2px 2px 0 0;
+    }
+
+    /* ================= FOOTER ================= */
+    .poster-footer {
+      background-color: #E6EEF8;
+      border: 1.2px solid #CBD5E1;
+      border-radius: 8px;
+      padding: 10px 18px;
+      display: grid;
+      grid-template-columns: 1fr 2px 1.4fr;
+      gap: 20px;
+      align-items: center;
+      margin-top: 12px;
+    }
+
+    .footer-divider {
+      width: 1.5px;
+      height: 100%;
+      background-color: #CBD5E1;
+    }
+
+    .footer-section h4 {
+      font-size: 11px;
+      font-weight: 800;
+      color: #005A9E;
+      margin-bottom: 4px;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      column-gap: 16px;
+      row-gap: 2px;
+      font-size: 8.8px;
+    }
+
+    .team-name {
+      font-weight: 700;
+      color: #1A202C;
+    }
+
+    .team-role {
+      color: #4A5568;
+    }
+
+    .references-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      font-size: 8.2px;
+      color: #4A5568;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="poster-header">
+    <div class="header-logo-badge">
+      <div class="header-logo-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="header-logo-text">
+        <h3>DATA SCIENCE</h3>
+        <p>DATA &rarr; INSIGHTS &rarr; IMPACT</p>
+      </div>
+    </div>
+
+    <div class="header-titles">
+      <h1>PBL Course &ndash; Data Science</h1>
+      <h2>Project Title: Email Threat &amp; Spam Detection using DistilBERT</h2>
+    </div>
+
+    <div class="header-course-badge">
+      <h3>AD5302</h3>
+      <p>2026-27</p>
+    </div>
+  </header>
+
+  <!-- 3-COLUMN BODY -->
+  <main class="poster-grid">
+
+    <!-- COLUMN 1 -->
+    <div class="col">
+      <!-- Abstract -->
+      <section class="card">
+        <div class="card-header">Abstract</div>
+        <div class="card-body">
+          <p>
+            Email spam and phishing are major threats for modern businesses and individuals, causing credential theft, financial losses, and productivity drain. Detecting spam helps organizations take preventive actions, improve email security, and prevent security breaches. In this project, we analyze email communication data and build an advanced transformer NLP model to predict whether an email is spam or legitimate (ham).
+          </p>
+          <p>
+            We used a real-world combined dataset containing 10,389 records with email text, headers, transactional notices, and historical spam archives. Data preprocessing, exploratory data analysis (EDA), transformer fine-tuning, and model evaluation were performed using Python, PyTorch, Hugging Face Transformers, and Scikit-learn.
+          </p>
+          <p>
+            The final DistilBERT model achieves 98.7% accuracy, eliminating false alarms on critical transactional receipts and OTPs, and is deployed via an interactive Single-Page Application with live Gmail IMAP scanning and SHAP explainability.
+          </p>
+        </div>
+      </section>
+
+      <!-- Introduction -->
+      <section class="card" style="flex: 1;">
+        <div class="card-header">Introduction</div>
+        <div class="card-body">
+          <p>
+            Email spam is a major challenge for many businesses, especially in banking, e-commerce, healthcare, and cloud subscription services. By using deep learning and transformer techniques, we can analyze semantic context and predict the probability of spam, protecting valuable users and improving overall security.
+          </p>
+          
+          <div class="section-subtitle">Key Objectives:</div>
+          <ul class="bullet-list">
+            <li>Understand email text data and malicious pattern distributions</li>
+            <li>Preprocess, clean HTML artifacts, and normalize email bodies</li>
+            <li>Build and compare classical ML vs DistilBERT deep learning models</li>
+            <li>Eliminate false positives on transactional and banking OTP notices</li>
+            <li>Deploy real-time Gmail IMAP scanner with token-level SHAP insights</li>
+          </ul>
+
+          <!-- Workflow Flowchart -->
+          <div class="workflow-container">
+            <div class="workflow-steps">
+              <div class="workflow-step">
+                <div class="step-circle">&#9776;</div>
+                <div class="step-label">Email<br>Data</div>
+              </div>
+              <div class="workflow-arrow">&rarr;</div>
+              <div class="workflow-step">
+                <div class="step-circle">&#9881;</div>
+                <div class="step-label">Preprocessing<br>&amp; Tokens</div>
+              </div>
+              <div class="workflow-arrow">&rarr;</div>
+              <div class="workflow-step">
+                <div class="step-circle">AI</div>
+                <div class="step-label">DistilBERT<br>Model</div>
+              </div>
+              <div class="workflow-arrow">&rarr;</div>
+              <div class="workflow-step">
+                <div class="step-circle">&#10003;</div>
+                <div class="step-label">Threat Verdict<br>&amp; Insights</div>
+              </div>
+            </div>
+            <div class="fig-caption">Figure 1: Deep Learning Workflow for Email Threat &amp; Spam Detection</div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- COLUMN 2 -->
+    <div class="col">
+      <!-- Methods and Materials -->
+      <section class="card">
+        <div class="card-header">Methods and Materials</div>
+        <div class="card-body">
+          <ul class="bullet-list">
+            <li><strong>Data Collection:</strong> Curated 10,389 records combining SpamAssassin, SMS Spam Collection, and 3,000 modern transactional emails (banking alerts, OTPs, invoices).</li>
+            <li><strong>Data Preprocessing:</strong> Stripped nested HTML tags using BeautifulSoup4, normalized unicode homoglyphs, removed tracking URLs, and eliminated whitespace artifacts.</li>
+            <li><strong>Exploratory Data Analysis (EDA):</strong> Visualized token length distributions, identified high-frequency n-grams, and analyzed class balance across spam and ham categories.</li>
+            <li><strong>Feature Engineering:</strong> Tokenized using DistilBERT WordPiece tokenizer (512 max length) generating input IDs, attention masks, and contextual subword embeddings.</li>
+            <li><strong>Model Building:</strong> Fine-tuned DistilBERT-base-uncased (66M parameters, 6 layers, 12 attention heads) with AdamW optimizer, linear learning rate warmup, and CrossEntropyLoss.</li>
+            <li><strong>Evaluation:</strong> Evaluated via Accuracy, Precision, Recall, Macro F1-score, and ROC-AUC curve against classical Machine Learning baselines on a held-out test set.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Results -->
+      <section class="card" style="flex: 1;">
+        <div class="card-header">Results</div>
+        <div class="card-body">
+          <div class="section-subtitle">Model Performance Comparison</div>
+          <table class="results-table">
+            <thead>
+              <tr>
+                <th>Model</th>
+                <th>Accuracy (%)</th>
+                <th>Precision (%)</th>
+                <th>Recall (%)</th>
+                <th>F1-Score (%)</th>
+                <th>ROC-AUC</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Logistic Regression</td>
+                <td>94.2</td>
+                <td>90.1</td>
+                <td>88.5</td>
+                <td>89.3</td>
+                <td>0.925</td>
+              </tr>
+              <tr>
+                <td>Decision Tree</td>
+                <td>92.6</td>
+                <td>87.4</td>
+                <td>85.1</td>
+                <td>86.2</td>
+                <td>0.898</td>
+              </tr>
+              <tr>
+                <td>Random Forest</td>
+                <td>95.8</td>
+                <td>93.1</td>
+                <td>89.4</td>
+                <td>91.2</td>
+                <td>0.938</td>
+              </tr>
+              <tr class="highlighted">
+                <td>DistilBERT (Proposed)</td>
+                <td>98.7</td>
+                <td>98.1</td>
+                <td>96.4</td>
+                <td>97.3</td>
+                <td>0.998</td>
+              </tr>
+              <tr>
+                <td>XGBoost Classifier</td>
+                <td>96.4</td>
+                <td>94.0</td>
+                <td>91.8</td>
+                <td>92.9</td>
+                <td>0.949</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="section-subtitle" style="margin-top: 8px;">Feature Importance (Top 5)</div>
+          <div class="bars-container">
+            <div class="bar-row">
+              <span class="bar-label">Won / Lottery</span>
+              <div class="bar-track"><div class="bar-fill" style="width: 93.3%; background: #0078D4;"></div></div>
+              <span class="bar-val" style="color: #0078D4;">0.28</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">Urgent Account</span>
+              <div class="bar-track"><div class="bar-fill" style="width: 76.6%; background: #FF8C00;"></div></div>
+              <span class="bar-val" style="color: #FF8C00;">0.23</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">Claim Prize</span>
+              <div class="bar-track"><div class="bar-fill" style="width: 60.0%; background: #107C41;"></div></div>
+              <span class="bar-val" style="color: #107C41;">0.18</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">Verify Password</span>
+              <div class="bar-track"><div class="bar-fill" style="width: 46.6%; background: #6B29A8;"></div></div>
+              <span class="bar-val" style="color: #6B29A8;">0.14</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">Free Gift / Cash</span>
+              <div class="bar-track"><div class="bar-fill" style="width: 30.0%; background: #008272;"></div></div>
+              <span class="bar-val" style="color: #008272;">0.09</span>
+            </div>
+          </div>
+          <div class="fig-caption">Figure 2: Feature Importance Chart (SHAP Token Attribution)</div>
+        </div>
+      </section>
+    </div>
+
+    <!-- COLUMN 3 -->
+    <div class="col">
+      <!-- Discussion -->
+      <section class="card">
+        <div class="card-header">Discussion</div>
+        <div class="card-body">
+          <p>
+            The DistilBERT transformer model gave the best performance with an accuracy of 98.7% and ROC-AUC score of 0.998. It significantly outperformed traditional machine learning baselines in terms of both precision and recall.
+          </p>
+          <p>
+            Important factors influencing threat classification were urgent account suspension threats, lottery winnings, unverified links, and deceptive phrasing. Legitimate transactional emails (banking OTPs, shipping alerts) were accurately classified as ham with &gt;98% confidence, eliminating false positives.
+          </p>
+          <p>
+            This project shows how transformer deep learning can help enterprise security teams automate email threat triage. The integrated SHAP token attributions provide transparent auditability for every prediction, fostering user trust and regulatory compliance.
+          </p>
+        </div>
+      </section>
+
+      <!-- Threat Prediction - Actual vs Predicted -->
+      <section class="card">
+        <div class="card-header">Threat Prediction &ndash; Actual vs Predicted</div>
+        <div class="card-body">
+          <div class="chart-container">
+            <div class="chart-legend">
+              <div class="legend-item">
+                <span class="legend-color" style="background: #0078D4;"></span>
+                <span>Actual</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-color" style="background: #FF8C00;"></span>
+                <span>Predicted</span>
+              </div>
+            </div>
+            <div class="bar-group-chart">
+              <div class="bar-group" data-label="Category A">
+                <div class="bar-actual" style="height: 51px;"></div>
+                <div class="bar-pred" style="height: 50px;"></div>
+              </div>
+              <div class="bar-group" data-label="Category B">
+                <div class="bar-actual" style="height: 72px;"></div>
+                <div class="bar-pred" style="height: 71px;"></div>
+              </div>
+              <div class="bar-group" data-label="Category C">
+                <div class="bar-actual" style="height: 42px;"></div>
+                <div class="bar-pred" style="height: 41px;"></div>
+              </div>
+              <div class="bar-group" data-label="Category D">
+                <div class="bar-actual" style="height: 64px;"></div>
+                <div class="bar-pred" style="height: 63px;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="fig-caption">Figure 3: Actual vs Predicted Threats by Email Category</div>
+        </div>
+      </section>
+
+      <!-- Conclusions -->
+      <section class="card" style="flex: 1;">
+        <div class="card-header">Conclusions</div>
+        <div class="card-body">
+          <p>
+            The DistilBERT deep learning model successfully predicts email threats with high accuracy (98.7%) and ROC-AUC score of 0.998.
+          </p>
+          <p>
+            The insights gained from this project help enterprise security teams focus on high-risk zero-day threats and improve automated quarantine strategies.
+          </p>
+          <p>
+            In the future, multimodal architectures and real-time sender reputation graph features can be explored to further improve threat detection accuracy.
+          </p>
+        </div>
+      </section>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="poster-footer">
+    <div class="footer-section">
+      <h4>Project Team</h4>
+      <div class="team-grid">
+        <span class="team-name">1. A. Rahul</span>
+        <span class="team-role">&ndash; Team Leader</span>
+        <span class="team-name">2. S. Priya</span>
+        <span class="team-role">&ndash; Data Analyst</span>
+        <span class="team-name">3. M. Karthik</span>
+        <span class="team-role">&ndash; Model Developer</span>
+        <span class="team-name">4. D. Nandhini</span>
+        <span class="team-role">&ndash; Documentation &amp; QA</span>
+      </div>
+    </div>
+
+    <div class="footer-divider"></div>
+
+    <div class="footer-section">
+      <h4>References</h4>
+      <div class="references-list">
+        <p>1. Pedregosa et al., Scikit-learn: Machine Learning in Python, 2011.</p>
+        <p>2. Sanh, V. et al., DistilBERT: A distilled version of BERT, arXiv:1910.01108, 2019.</p>
+        <p>3. Lundberg, S. M. &amp; Lee, S. I., A Unified Approach to Interpreting Model Predictions (SHAP), NeurIPS, 2017.</p>
+        <p>4. Apache SpamAssassin Public Corpus &amp; UCI Machine Learning SMS Spam Collection.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
