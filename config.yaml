@@ -1,4 +1,4 @@
-﻿# =============================================================
+# =============================================================
 # Spam-Ham Email Detector — Central Configuration
 # =============================================================
 
@@ -16,6 +16,7 @@ paths:
 
 model:
   base_model: "distilbert-base-uncased"
+  hf_repo: ""  # Optional: Hugging Face model repo (e.g. username/spamshield-distilbert) for cloud deployment
   num_labels: 2
   max_length: 256
   id2label:

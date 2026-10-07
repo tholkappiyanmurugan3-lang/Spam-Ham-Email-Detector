@@ -22,9 +22,17 @@ from dotenv import load_dotenv
 from loguru import logger
 
 # ---------------------------------------------------------------------------
-# Load .env file (safe even if missing)
+# Load .env file (safe even if missing) and Streamlit secrets
 # ---------------------------------------------------------------------------
 load_dotenv()
+try:
+    import streamlit as st
+    if hasattr(st, "secrets"):
+        for k, v in st.secrets.items():
+            if isinstance(v, (str, int, float, bool)) and str(k) not in os.environ:
+                os.environ[str(k)] = str(v)
+except Exception:
+    pass
 
 
 def _load_yaml(path: Path) -> dict[str, Any]:
@@ -73,6 +81,10 @@ class _Config:
     @property
     def model_name(self) -> str:
         return self.get("model", "base_model", default="distilbert-base-uncased")
+
+    @property
+    def hf_repo(self) -> str:
+        return os.getenv("HF_MODEL_REPO", self.get("model", "hf_repo", default=""))
 
     @property
     def num_labels(self) -> int:

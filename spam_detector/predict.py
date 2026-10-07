@@ -76,11 +76,28 @@ class Predictor:
         self._load_model()
 
     def _load_model(self) -> None:
-        """Load tokenizer and model from disk."""
-        model_path = str(self.model_dir)
-        logger.info(f"Loading model from {model_path}")
-        self.tokenizer = AutoTokenizer.from_pretrained(model_path)
-        self.model = AutoModelForSequenceClassification.from_pretrained(model_path)
+        """Load tokenizer and model from local disk or Hugging Face Hub."""
+        local_model_path = Path(self.model_dir)
+        has_local_weights = local_model_path.exists() and (
+            (local_model_path / "model.safetensors").exists()
+            or (local_model_path / "pytorch_model.bin").exists()
+        )
+
+        if has_local_weights:
+            source = str(local_model_path)
+            logger.info(f"Loading fine-tuned model from local directory: {source}")
+        elif cfg.hf_repo:
+            source = cfg.hf_repo
+            logger.info(f"Local weights not found. Loading model from Hugging Face Hub: {source}")
+        else:
+            source = str(local_model_path)
+            logger.warning(
+                f"Model weights not found at {source} and HF_MODEL_REPO not configured. "
+                f"Attempting to load from {source}."
+            )
+
+        self.tokenizer = AutoTokenizer.from_pretrained(source)
+        self.model = AutoModelForSequenceClassification.from_pretrained(source)
         self.model.eval()
 
         # HuggingFace pipeline for convenient inference
@@ -93,7 +110,7 @@ class Predictor:
             truncation=True,
             max_length=cfg.max_length,
         )
-        logger.info("Model loaded successfully.")
+        logger.info(f"Model successfully loaded from {source}.")
 
     def predict(self, text: str, clean: bool = True) -> PredictionResult:
         """
